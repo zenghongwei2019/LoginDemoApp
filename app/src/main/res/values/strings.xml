@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">userlogin</string>
+    <string name="user">用户名：</string>
+    <string name="usertext">请输入用户名</string>
+    <string name="password">密码：</string>
+    <string name="passwordtext">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="quit">退出登录</string>
+</resources>
