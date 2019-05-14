@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Userinfo userinfo = new Userinfo();
         userinfo.setUsername(username);
         userinfo.setPassword(password);
-        userinfoModel.Login(userinfo,this);
+        userinfoModel.login(userinfo,this);
     }
 
     @Override
