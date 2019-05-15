@@ -8,52 +8,50 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.zenghongwei.example.userlogin.Bean.Userinfo;
-import com.zenghongwei.example.userlogin.Model.OnUserinfoListener;
-import com.zenghongwei.example.userlogin.Model.UserinfoModelimpl;
+import com.zenghongwei.example.userlogin.Bean.UserInfo;
+import com.zenghongwei.example.userlogin.Model.OnUserInfoListener;
+import com.zenghongwei.example.userlogin.Model.UserInfoModelImpl;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnUserinfoListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnUserInfoListener {
+
     private EditText mEtUserName;
     private EditText mEtPassWord;
-    private Button mBtnLogin;
-    private UserinfoModelimpl userinfoModel;
-    String username;
-    String password;
+    private UserInfoModelImpl mUserInfoModelImpl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        userinfoModel = new UserinfoModelimpl();
+        mUserInfoModelImpl = new UserInfoModelImpl();
     }
 
-    public static void mainstart(Context context){
-        Intent starter = new Intent(context,MainActivity.class);
+    public static void mainStart(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
     }
 
     private void init() {
-        mEtUserName = findViewById(R.id.utext);
-        mEtPassWord = findViewById(R.id.pstext);
-        mBtnLogin = findViewById(R.id.loginbt);
-        mBtnLogin.setOnClickListener(this);
+        mEtUserName = findViewById(R.id.et_username);
+        mEtPassWord = findViewById(R.id.et_password);
+        Button loginBtn = findViewById(R.id.btn_login);
+        loginBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        username = mEtUserName.getText().toString();
-        password = mEtPassWord.getText().toString();
-        Userinfo userinfo = new Userinfo();
+        String username = mEtUserName.getText().toString();
+        String password = mEtPassWord.getText().toString();
+        UserInfo userinfo = new UserInfo();
         userinfo.setUsername(username);
         userinfo.setPassword(password);
-        userinfoModel.login(userinfo,this);
+        mUserInfoModelImpl.login(userinfo, this);
     }
 
     @Override
-    public void onSuccess(Userinfo userinfo) {
+    public void onSuccess(UserInfo userinfo) {
         Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show();
-        SuccessActivity.successstart(MainActivity.this);
+        SuccessActivity.successStart(MainActivity.this);
     }
 
     @Override

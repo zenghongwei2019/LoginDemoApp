@@ -1,6 +1,6 @@
 package com.zenghongwei.example.userlogin.Bean;
 
-public class Userinfo {
+public class UserInfo {
 
     private String username;
     private String password;
